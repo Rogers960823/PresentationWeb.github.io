@@ -56,21 +56,41 @@
   <input type="text" id="review" name="review"><br>
 	
 	<form action="/action_page.php">
-<script>
-  function showAlert() {
+<br>
+	<textarea  id="myTextarea"  href="C:\Users\Sizwe Buthelezi\Desktop\Practice_Code\data.txt">type your review</textarea></br>
+	
+	
+	<p id="demo"></p>
+	<script>
+  function myFunction() {
     alert ("We Appreciate your input");
   }
   </script>
 	
+	
+	
 	 <script>
-  function showAlert() {
+  function myFunction() {
+  
+  var x = document.getElementById("myTextarea").value;
+	 document.getElementById("demo").innerHTML=x;
     var myText = "Thank you for taking time to give your review";
     alert (myText);
+	
+	 var fso = new ActiveXObject("Scripting.FileSystemObject");
+    var text=document.getElementById("demo").innerText;
+    var fileName=document.getElementById("myTextarea").innerText;
+    var s = fso.CreateTextFile("data.txt", true);
+    s.WriteLine(text);
+    s.WriteLine('***********************');
+    s.Close();
   }
   </script>
+  
+  
   </form>
   
-  <button onclick="showAlert()">Submit review</button>
+  <button onclick="myFunction()">Submit review</button>
   
 		<h4>rating from 1 to 5<h4>
 	   <div class="rate">
