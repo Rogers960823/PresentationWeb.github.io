@@ -55,14 +55,19 @@
 <form action="/action_page.php">
 
 <form id="fr1">
-     <h4>First name: 
-    <input type="textname"  name="comment" required id="tb1" /><br></br>
-	
-	<h4>Last Name:
-	<input type="textsurname" name="comment" required id="tb2" /><br></br>
-	
-	<h4>Contact No:
-    <input type="textcontact" name="comment" required id="tb3" /></h4><br>
+     <form id="elem" autocomplete="on">
+ First Name:
+  <br>
+  <input type="textname" name="firstname" id="firstname" required placeholder="Enter the first name" pattern="[A-Za-z\-]+" maxlength="25"><br>
+  Last Name:
+  <br>
+  <input type="textsurname" name="lastsname"  id="lastname" required placeholder="Enter your surname" pattern="[A-Za-z\-]+" maxlength="25"><br>
+  Contact Number:
+  <br>
+  <input type="textcontact" name="contactNo"  id="contactNo" required placeholder="Enter your contact number" pattern="[0-9]+" maxlength="25"><br>
+  Email Address:
+  <br>
+  <input type="textemail" name="email"  id="email" required placeholder="Enter your email" pattern="[A-Za-z\-]+" maxlength="25"><br>
 	
 	<a href="mailto:rogers960823@gmail.com">
     <input type="button" id="button" value="Submit" /><br></br>
