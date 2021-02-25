@@ -56,25 +56,86 @@
 
 
      <form id="elem" autocomplete="on">
- First Name:
-  <br>
-  <input type="textname" name="firstname" id="firstname" required placeholder="Enter the first name" pattern="[A-Za-z\-]+" maxlength="25"><br>
-  Last Name:
-  <br>
-  <input type="textsurname" name="lastsname"  id="lastname" required placeholder="Enter your surname" pattern="[A-Za-z\-]+" maxlength="25"><br>
-  Contact Number:
-  <br>
-  <input type="textcontact" name="contactNo"  id="contactNo" required placeholder="Enter your contact number" pattern="[0-9]+" maxlength="25"><br>
-  Email Address:
-  <br>
-  <input type="textemail" name="email"  id="email" required placeholder="Enter your email" pattern="[A-Za-z\-]+" maxlength="25"><br>
-	
-	<a href="mailto:rogers960823@gmail.com">
-    <input type="button" id="button" value="Submit" /><br></br>
-	</body>
-	</a>
-	</textarea>
+<div>
+	<body>
+        <center>
+		<div>
+		<form>
+		<h4>Full Name:
+            <input type="text" id="txtName" name="comment" required id="tb1" placeholder="Enter your name" pattern="[A-Za-z\-]+" maxlength="25"/><br></br>
+               </div>
+                  <div>
+		           <h4>Your Age:
+                       <input type="text" id="txtAge" name="comment" required id="tb2" placeholder="Enter your age" pattern="[0-9]+" maxlength="25"/><br></br>
+                       </div>
+			         <div>		   
+		    <h4>Email Address:
+            <input type="text" id="txtEmail" name="comment" required id="tb3" placeholder="Enter your email address" pattern="[a-z0-9\-]+@+[a-z\-]+.[a-z\-]+" maxlength="25"/><br></br>
+                  </div>
+			<div>	  
+		<h4>Select Country:
+            <select id="selCountry">
+                <option selected value="">-- Choose Region --</option>
+                    <option value="Gauteng">Gauteng(Johannesburg)</option>
+                       <option value="Limpopo">Limpopo(polokwane)</option>
+                        <option value="Western Cape">Western Cape(Cape Town)</option>
+				       <option value="Western Cape">Kwazulu-Natal(Durban)</option><br></br>
+				    </div>
+            </select>
+                <div>
+		   <h4>Message:
+            <textarea id="msg" name="msg" name="comment" required id="message" placeholder="Write some message ..." pattern="[A-Za-z\-]+" maxlength="400" style="height:100px"></textarea><br></br>
+        </div>
+
+               <div>
+            <input type="button" id="bt" value="Save data" onclick="saveFile()" /><br></br>
+            </div>
+			</form>
+		<a href="mailto:rogers960823@gmail.com">
+    <input Align="right" type="button" id="button" value="Send Email"/>
+		</center>
+    </br>
+</body>
 </form>
+</form>
+
+<script>
+    let saveFile = () => {
+    	
+        // Get the data from each element on the form.
+    	const name = document.getElementById('txtName');
+        const age = document.getElementById('txtAge');
+        const email = document.getElementById('txtEmail');
+        const country = document.getElementById('selCountry');
+        const msg = document.getElementById('msg');
+        
+        // This variable stores all the data.
+        let data = 
+            '\r Name: ' + name.value + ' \r\n ' + 
+            'Age: ' +age.value + ' \r\n ' + 
+            'Email: ' + email.value + ' \r\n ' + 
+            'Country: ' + country.value + ' \r\n ' + 
+            'Message: ' + msg.value;
+        
+        // Convert the text to BLOB.
+        const textToBLOB = new Blob([data], { type: 'text/plain' });
+        const sFileName = 'Data.txt';	   // The file to save the data.
+
+        let newLink = document.createElement("a");
+        newLink.download = sFileName;
+
+        if (window.webkitURL != null) {
+            newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+        }
+        else {
+            newLink.href = window.URL.createObjectURL(textToBLOB);
+            newLink.style.display = "none";
+            document.body.appendChild(newLink);
+        }
+
+        newLink.click(); 
+    }
+</script>
 </form>
 </form>
 </center>
